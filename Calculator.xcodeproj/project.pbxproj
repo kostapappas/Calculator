@@ -3,28 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		6B0D9D5E247C354300ACE335 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D9D5D247C354300ACE335 /* AppDelegate.swift */; };
 		6B0D9D60247C354300ACE335 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D9D5F247C354300ACE335 /* SceneDelegate.swift */; };
-		6B0D9D62247C354300ACE335 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D9D61247C354300ACE335 /* ViewController.swift */; };
+		6B0D9D62247C354300ACE335 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0D9D61247C354300ACE335 /* CalculatorViewController.swift */; };
 		6B0D9D65247C354300ACE335 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D9D63247C354300ACE335 /* Main.storyboard */; };
 		6B0D9D67247C354400ACE335 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D9D66247C354400ACE335 /* Assets.xcassets */; };
 		6B0D9D6A247C354400ACE335 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0D9D68247C354400ACE335 /* LaunchScreen.storyboard */; };
+		6B452BCD247C4581006C3688 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BCC247C4581006C3688 /* Theme.swift */; };
+		6B452BCF247C4E81006C3688 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BCE247C4E81006C3688 /* CalculatorButton.swift */; };
+		6B452BD2247C58BD006C3688 /* CalculatorNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BD1247C58BD006C3688 /* CalculatorNumberButton.swift */; };
+		6B452BD4247C58D9006C3688 /* CalculatorActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BD3247C58D9006C3688 /* CalculatorActionButton.swift */; };
+		6B452BD7247C5C23006C3688 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 6B452BD6247C5C23006C3688 /* Stevia */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6B0D9D5A247C354300ACE335 /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0D9D5D247C354300ACE335 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B0D9D5F247C354300ACE335 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6B0D9D61247C354300ACE335 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6B0D9D61247C354300ACE335 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		6B0D9D64247C354300ACE335 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B0D9D66247C354400ACE335 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6B0D9D69247C354400ACE335 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0D9D6B247C354400ACE335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B0D9D71247C356900ACE335 /* Calculator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Calculator.entitlements; sourceTree = "<group>"; };
+		6B452BCC247C4581006C3688 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		6B452BCE247C4E81006C3688 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
+		6B452BD1247C58BD006C3688 /* CalculatorNumberButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorNumberButton.swift; sourceTree = "<group>"; };
+		6B452BD3247C58D9006C3688 /* CalculatorActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B452BD7247C5C23006C3688 /* Stevia in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,16 +67,92 @@
 		6B0D9D5C247C354300ACE335 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				6B452BC7247C4410006C3688 /* common */,
+				6B452BC5247C406F006C3688 /* controllers */,
+				6B452BC4247C4052006C3688 /* storyboards */,
+				6B452BC3247C403C006C3688 /* assets */,
 				6B0D9D71247C356900ACE335 /* Calculator.entitlements */,
 				6B0D9D5D247C354300ACE335 /* AppDelegate.swift */,
 				6B0D9D5F247C354300ACE335 /* SceneDelegate.swift */,
-				6B0D9D61247C354300ACE335 /* ViewController.swift */,
-				6B0D9D63247C354300ACE335 /* Main.storyboard */,
-				6B0D9D66247C354400ACE335 /* Assets.xcassets */,
-				6B0D9D68247C354400ACE335 /* LaunchScreen.storyboard */,
 				6B0D9D6B247C354400ACE335 /* Info.plist */,
 			);
 			path = Calculator;
+			sourceTree = "<group>";
+		};
+		6B452BC2247C4011006C3688 /* calculator */ = {
+			isa = PBXGroup;
+			children = (
+				6B452BC6247C419B006C3688 /* views */,
+				6B0D9D61247C354300ACE335 /* CalculatorViewController.swift */,
+			);
+			path = calculator;
+			sourceTree = "<group>";
+		};
+		6B452BC3247C403C006C3688 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				6B0D9D66247C354400ACE335 /* Assets.xcassets */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		6B452BC4247C4052006C3688 /* storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6B0D9D63247C354300ACE335 /* Main.storyboard */,
+				6B0D9D68247C354400ACE335 /* LaunchScreen.storyboard */,
+			);
+			path = storyboards;
+			sourceTree = "<group>";
+		};
+		6B452BC5247C406F006C3688 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				6B452BC2247C4011006C3688 /* calculator */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		6B452BC6247C419B006C3688 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				6B452BD0247C589C006C3688 /* buttons */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		6B452BC7247C4410006C3688 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				6B452BCB247C4452006C3688 /* theme */,
+				6B452BC8247C4415006C3688 /* extensions */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		6B452BC8247C4415006C3688 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		6B452BCB247C4452006C3688 /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				6B452BCC247C4581006C3688 /* Theme.swift */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		6B452BD0247C589C006C3688 /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				6B452BCE247C4E81006C3688 /* CalculatorButton.swift */,
+				6B452BD1247C58BD006C3688 /* CalculatorNumberButton.swift */,
+				6B452BD3247C58D9006C3688 /* CalculatorActionButton.swift */,
+			);
+			path = buttons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +172,9 @@
 			dependencies = (
 			);
 			name = Calculator;
+			packageProductDependencies = (
+				6B452BD6247C5C23006C3688 /* Stevia */,
+			);
 			productName = Calculator;
 			productReference = 6B0D9D5A247C354300ACE335 /* Calculator.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +203,9 @@
 				Base,
 			);
 			mainGroup = 6B0D9D51247C354300ACE335;
+			packageReferences = (
+				6B452BD5247C5C23006C3688 /* XCRemoteSwiftPackageReference "Stevia" */,
+			);
 			productRefGroup = 6B0D9D5B247C354300ACE335 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -161,9 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B0D9D62247C354300ACE335 /* ViewController.swift in Sources */,
+				6B0D9D62247C354300ACE335 /* CalculatorViewController.swift in Sources */,
 				6B0D9D5E247C354300ACE335 /* AppDelegate.swift in Sources */,
+				6B452BD2247C58BD006C3688 /* CalculatorNumberButton.swift in Sources */,
+				6B452BCD247C4581006C3688 /* Theme.swift in Sources */,
 				6B0D9D60247C354300ACE335 /* SceneDelegate.swift in Sources */,
+				6B452BD4247C58D9006C3688 /* CalculatorActionButton.swift in Sources */,
+				6B452BCF247C4E81006C3688 /* CalculatorButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,16 +407,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D9PR25ESML;
 				INFOPLIST_FILE = Calculator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kostapappas.com.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -332,16 +428,16 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = D9PR25ESML;
 				INFOPLIST_FILE = Calculator/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kostapappas.com.Calculator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -367,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6B452BD5247C5C23006C3688 /* XCRemoteSwiftPackageReference "Stevia" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/freshOS/Stevia";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6B452BD6247C5C23006C3688 /* Stevia */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6B452BD5247C5C23006C3688 /* XCRemoteSwiftPackageReference "Stevia" */;
+			productName = Stevia;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6B0D9D52247C354300ACE335 /* Project object */;
 }
