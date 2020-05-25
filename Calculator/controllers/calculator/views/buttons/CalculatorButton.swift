@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable
 class CalculatorButton: UIButton {
-    
+        
     override init(frame: CGRect) {
         super.init(frame: frame)
     }

@@ -10,6 +10,7 @@ import UIKit
 
 @IBDesignable
 class CalculatorActionButton: CalculatorButton {
+    private var doItOnce = false
 
     @IBInspectable var numberText: String? {
         didSet {
@@ -21,6 +22,7 @@ class CalculatorActionButton: CalculatorButton {
     required init (text: String = "=") {
         self.numberText = text
         super.init(frame: CGRect.zero)
+        self.initialSetup()
     }
     
     override init(frame: CGRect) {
@@ -36,6 +38,13 @@ class CalculatorActionButton: CalculatorButton {
     override func prepareForInterfaceBuilder() {
       super.prepareForInterfaceBuilder()
         self.initialSetup()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard !doItOnce else { return }
+        doItOnce = true
+        self.titleLabel?.font = UIFont.systemFont(ofSize: self.frame.height / 2)
     }
     
     private func initialSetup() {

@@ -10,19 +10,24 @@ import UIKit
 
 @IBDesignable
 class CalculatorNumberButton: CalculatorButton {
+    private var doItOnce = false
 
     @IBInspectable var numberText: String? {
         didSet {
             self.setTitle(numberText, for: .normal)
-            setNeedsLayout()
         }
     }
 
-    var number: Int = 0
+    var number: Int = 0 {
+        didSet {
+            numberText = "\(number)"
+        }
+    }
     
     required init (number: Int = 0) {
         self.number = number
         super.init(frame: CGRect.zero)
+        self.initialSetup()
     }
     
     override init(frame: CGRect) {
@@ -40,26 +45,35 @@ class CalculatorNumberButton: CalculatorButton {
         self.initialSetup()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard !doItOnce else { return }
+        doItOnce = true
+        self.titleLabel?.font = UIFont.systemFont(ofSize: self.frame.height / 2)
+    }
+    
     private func initialSetup() {
-        self.backgroundColor = Theme.shared.colors.secondary
-        self.titleLabel?.font = UIFont.systemFont(ofSize: self.frame.height/2)
-        self.setTitle(numberText ?? "1", for: .normal)
+        self.backgroundColor = Theme.shared.colors.third
+        self.setTitleColor(Theme.shared.colors.calculatorNumberColor, for: .normal)
+        self.numberText = "\(number)"
+        setNeedsLayout()
     }
 }
 
 @IBDesignable
 class CalculatorTextButton: CalculatorButton {
+    private var doItOnce = false
 
-    @IBInspectable var customText: String? {
+    @IBInspectable var text: String? {
         didSet {
-            self.setTitle(customText, for: .normal)
-            setNeedsLayout()
+            self.setTitle(text, for: .normal)
         }
     }
-
-    required init (text: String = "5") {
-        self.customText = text
+    
+    required init (text: String = ",") {
+        self.text = text
         super.init(frame: CGRect.zero)
+        self.initialSetup()
     }
     
     override init(frame: CGRect) {
@@ -77,9 +91,17 @@ class CalculatorTextButton: CalculatorButton {
         self.initialSetup()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard !doItOnce else { return }
+        doItOnce = true
+        self.titleLabel?.font = UIFont.systemFont(ofSize: self.frame.height / 2)
+    }
+    
     private func initialSetup() {
-        self.backgroundColor = Theme.shared.colors.secondary
-        self.titleLabel?.font = UIFont.systemFont(ofSize: self.frame.height/2)
-        self.setTitle(customText ?? "1", for: .normal)
+        self.backgroundColor = Theme.shared.colors.third
+        self.setTitleColor(Theme.shared.colors.calculatorNumberColor, for: .normal)
+        self.text = ","
+        setNeedsLayout()
     }
 }
