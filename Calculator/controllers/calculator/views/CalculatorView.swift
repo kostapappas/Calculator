@@ -74,6 +74,7 @@ class CalculatorView: UIView {
                                                       buttonPlus])
         
         let verticalStack   = UIStackView()
+        verticalStack.backgroundColor = .black
         verticalStack.axis  = NSLayoutConstraint.Axis.vertical
         verticalStack.distribution  = UIStackView.Distribution.fillEqually
         verticalStack.alignment = UIStackView.Alignment.fill
@@ -83,11 +84,20 @@ class CalculatorView: UIView {
         verticalStack.addArrangedSubview(row1)
         verticalStack.addArrangedSubview(row0)
         verticalStack.addArrangedSubview(buttonCalculate)
-
+        row3.translatesAutoresizingMaskIntoConstraints = false
+        row3.Width == verticalStack.Width
+        row2.translatesAutoresizingMaskIntoConstraints = false
+        row2.Width == verticalStack.Width
+        row1.translatesAutoresizingMaskIntoConstraints = false
+        row1.Width == verticalStack.Width
+        row0.translatesAutoresizingMaskIntoConstraints = false
+        row0.Width == verticalStack.Width
+        buttonCalculate.translatesAutoresizingMaskIntoConstraints = false
+        buttonCalculate.Width == verticalStack.Width
         self.subviews([verticalStack])
         verticalStack.fillContainer()
 
-        self.backgroundColor = .white
+        self.backgroundColor = .black
     }
     
     private func generateHorizontalStack(of array: [UIView]) -> UIStackView {
@@ -95,13 +105,18 @@ class CalculatorView: UIView {
         stackView.axis  = NSLayoutConstraint.Axis.horizontal
         stackView.distribution  = UIStackView.Distribution.equalCentering
         stackView.alignment = UIStackView.Alignment.fill
-        stackView.spacing   = 8.0
-        
+        stackView.backgroundColor = .black
+        stackView.spacing = 8
         for (index, view) in array.enumerated() {
             stackView.addArrangedSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
             if array.count == 3 {
-                view.aspectRation(1.0/(index == 0 ? 2.13 : 1.0)).isActive = true
+                if index == 0 {
+                    view.Width >= stackView.Width  / 2
+                }else {
+                    view.aspectRation(1.0/1.0).isActive = true
+                    view.Width <= stackView.Width / 4
+                }
             } else {
                 view.aspectRation(1.0/1.0).isActive = true
             }
