@@ -73,27 +73,18 @@ class CalculatorView: UIView {
                                                       buttonComma,
                                                       buttonPlus])
         
-        let verticalStack   = UIStackView()
+        let verticalStack    = UIStackView()
         verticalStack.backgroundColor = .black
         verticalStack.axis  = NSLayoutConstraint.Axis.vertical
         verticalStack.distribution  = UIStackView.Distribution.fillEqually
         verticalStack.alignment = UIStackView.Alignment.fill
         verticalStack.spacing   = 8.0
-        verticalStack.addArrangedSubview(row3)
-        verticalStack.addArrangedSubview(row2)
-        verticalStack.addArrangedSubview(row1)
-        verticalStack.addArrangedSubview(row0)
-        verticalStack.addArrangedSubview(buttonCalculate)
-        row3.translatesAutoresizingMaskIntoConstraints = false
-        row3.Width == verticalStack.Width
-        row2.translatesAutoresizingMaskIntoConstraints = false
-        row2.Width == verticalStack.Width
-        row1.translatesAutoresizingMaskIntoConstraints = false
-        row1.Width == verticalStack.Width
-        row0.translatesAutoresizingMaskIntoConstraints = false
-        row0.Width == verticalStack.Width
-        buttonCalculate.translatesAutoresizingMaskIntoConstraints = false
-        buttonCalculate.Width == verticalStack.Width
+        for row in [row3, row2, row1, row0, buttonCalculate] {
+            verticalStack.addArrangedSubview(row)
+            row.translatesAutoresizingMaskIntoConstraints = false
+            row.Width == verticalStack.Width
+            
+        }
         self.subviews([verticalStack])
         verticalStack.fillContainer()
 
@@ -113,7 +104,7 @@ class CalculatorView: UIView {
             if array.count == 3 {
                 if index == 0 {
                     view.Width >= stackView.Width  / 2
-                }else {
+                } else {
                     view.aspectRation(1.0/1.0).isActive = true
                     view.Width <= stackView.Width / 4
                 }
