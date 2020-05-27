@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CalculatorButtonActionDelegate: class {
-    func buttonPressed(btn: UIButton)
+    func buttonPressed(text: String)
 }
 
 @IBDesignable
@@ -57,7 +57,6 @@ class CalculatorButton: UIButton {
     
     @objc
     func onPress() {
-        actionDelegate?.buttonPressed(btn: self)
-        print("button pressed")
+        actionDelegate?.buttonPressed(text: self.titleLabel?.text ?? "")
     }
 }

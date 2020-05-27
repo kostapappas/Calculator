@@ -22,15 +22,31 @@
                                     <constraint firstAttribute="width" secondItem="BUe-aa-A9l" secondAttribute="height" multiplier="333:406" id="hyG-wP-Trz"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-wb-dkC">
+                                <rect key="frame" x="23" y="291.5" width="368" height="93.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="wF3-wb-dkC" secondAttribute="height" multiplier="368:93" id="25e-6Y-8Ny"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="73"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BUe-aa-A9l" secondAttribute="bottom" constant="20" id="DNz-fP-TdF"/>
+                            <constraint firstItem="BUe-aa-A9l" firstAttribute="top" secondItem="wF3-wb-dkC" secondAttribute="bottom" constant="8" id="Mb5-IY-w6k"/>
+                            <constraint firstItem="wF3-wb-dkC" firstAttribute="width" secondItem="BUe-aa-A9l" secondAttribute="width" id="VLs-1H-k92"/>
                             <constraint firstItem="BUe-aa-A9l" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lsW-1l-U2a"/>
+                            <constraint firstItem="wF3-wb-dkC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qRU-F8-tbJ"/>
                             <constraint firstItem="BUe-aa-A9l" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.89" id="wNb-w9-eOJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="calculatorScreen" destination="wF3-wb-dkC" id="7MZ-zC-Ym1"/>
+                        <outlet property="calculatorView" destination="BUe-aa-A9l" id="UYQ-5j-lAy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

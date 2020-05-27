@@ -14,10 +14,16 @@ enum CalculatorType {
     case scientific
 }
 
+protocol CalculatorActionsDelegate: class {
+    func buttonPressed(text: String)
+}
+
 @IBDesignable
 class CalculatorView: UIView {
     
-    var type = CalculatorType.simple
+    weak var actionDelegate: CalculatorActionsDelegate?
+    
+    private var type = CalculatorType.simple
     
     private let buttonComma = CalculatorTextButton(text: ",")
     private let button0 = CalculatorNumberButton(number: 0)
@@ -36,8 +42,10 @@ class CalculatorView: UIView {
     private let buttonDivide = CalculatorActionButton(text: "/")
     private let buttonCalculate = CalculatorActionButton(text: "=")
     
-    required init (type: CalculatorType = .simple) {
+    required init (type: CalculatorType = .simple,
+                   actionDelegate: CalculatorActionsDelegate? = nil) {
         self.type = type
+        self.actionDelegate = actionDelegate
         super.init(frame: CGRect.zero)
     }
     
@@ -89,6 +97,15 @@ class CalculatorView: UIView {
         verticalStack.fillContainer()
 
         self.backgroundColor = .black
+        self.initButtonsDelegates()
+    }
+    
+    private func initButtonsDelegates() {
+        [button0, button1, button2, button3, button4, button5, button6,
+         button7, button8, button9, buttonMinus, buttonMultiply,
+         buttonDivide, buttonPlus, buttonCalculate, buttonComma].forEach { (calcBtn) in
+            calcBtn.actionDelegate = self
+        }
     }
     
     private func generateHorizontalStack(of array: [UIView]) -> UIStackView {
@@ -114,13 +131,10 @@ class CalculatorView: UIView {
         }
         return stackView
     }
-    
 }
 
-extension UIView {
-
-    func aspectRation(_ ratio: CGFloat) -> NSLayoutConstraint {
-
-        return NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: self, attribute: .width, multiplier: ratio, constant: 0)
+extension  CalculatorView: CalculatorButtonActionDelegate {
+    func buttonPressed(text: String) {
+        actionDelegate?.buttonPressed(text: text)
     }
 }
