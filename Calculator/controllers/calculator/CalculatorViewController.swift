@@ -87,35 +87,25 @@ final class CalculatorViewController: UIViewController {
     }
     
     fileprivate func showFromButtonPopUp() {
-        StringPickerPopover(title: "StringPicker", choices: exchangeRatesArray)
-        .setSelectedRow(0)
-            .setValueChange(action: { (_, _, _) in
-                //print("current  \(itemType)")
-            })
-        .setDoneButton(action: { (_, _, selectedString) in
-            //print("done row \(selectedRow) \(selectedString)")
-            self.selectedFromBase = selectedString
-            self.recalculateRatio()
-        })
-        .setCancelButton(action: { (_, _, _) in print("cancel")}
-        )
-        .appear(originView: fromExchRateBtn, baseViewController: self)
+       
     }
     
     fileprivate func showToButtonPopUp() {
-        StringPickerPopover(title: "StringPicker", choices: exchangeRatesArray)
+        StringPickerPopover(title: "", choices: exchangeRatesArray)
         .setSelectedRow(0)
             .setValueChange(action: { (_, _, _) in
                 //print("current  \(itemType)")
             })
-        .setDoneButton(action: { (_, _, selectedString) in
+        .setDoneButton(color: .white,
+                       action: { (_, _, selectedString) in
             //print("done row \(selectedRow) \(selectedString)")
             if let exchangeRatio = self.exchangeRates?[selectedString] {
                 self.selectedToBase = selectedString
                 self.activeRate = exchangeRatio
             }
         })
-        .setCancelButton(action: { (_, _, _) in print("cancel")}
+        .setCancelButton(color: .white,
+                         action: { (_, _, _) in print("cancel")}
         )
         .appear(originView: toExchRateBtn, baseViewController: self)
     }
