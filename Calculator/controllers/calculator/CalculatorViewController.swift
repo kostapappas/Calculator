@@ -67,17 +67,12 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction func fromExtRateBtnPressed(_ sender: Any) {
-//        if (exchangeRates ?? [:]).isEmpty {
-//            self.getLatestFromBackend { [weak self](results) in
-//                if let hasRates = results, !hasRates.isEmpty {
-//                    self?.showFromButtonPopUp()
-//                }
-//            }
-//        } else {
-//            self.showFromButtonPopUp()
-//        }
+        let alert = UIAlertController(title: "Restrictions", message: "Api free plan, doesn't support all Base Currencies", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        self.present(alert, animated: true)
     }
-    
     
     @IBAction func toExtRateBtnPressed(_ sender: Any) {
         if (exchangeRates ?? [:]).isEmpty {
