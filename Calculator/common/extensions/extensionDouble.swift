@@ -13,6 +13,6 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 1
         formatter.maximumFractionDigits = 2
-        return formatter.string(for: self) ?? ""
+        return (formatter.string(for: self) ?? "").replacingOccurrences(of: ",", with: ".")
     }
 }
