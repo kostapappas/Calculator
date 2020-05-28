@@ -17,8 +17,9 @@ public class FixedProxyAPI {
         return netManag
     }
     
-    func getLatest(completion: @escaping (ΝetworkAnswer<[String: Double]>?, String, Int?) -> Void) {
-        let api = FixerAPI.latest
+    func getLatest(baseTxt: String,
+                   completion: @escaping (ΝetworkAnswer<[String: Double]>?, String, Int?) -> Void) {
+        let api = FixerAPI.latest(base: baseTxt)
         let handleNetworkCompletion = self.factoryTheHandleCompletion(completion: completion)
         networkManager.getJson(from: api,
                                completion: handleNetworkCompletion)

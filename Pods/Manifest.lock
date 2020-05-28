@@ -1,0 +1,16 @@
+PODS:
+  - SwiftyPickerPopover (6.6.6)
+
+DEPENDENCIES:
+  - SwiftyPickerPopover
+
+SPEC REPOS:
+  trunk:
+    - SwiftyPickerPopover
+
+SPEC CHECKSUMS:
+  SwiftyPickerPopover: a402960a6687c911ffcb4e9fb282a1bc61186ab4
+
+PODFILE CHECKSUM: 83a3e5153f2510493e7d068cb09f93352f682832
+
+COCOAPODS: 1.9.1

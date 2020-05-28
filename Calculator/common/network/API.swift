@@ -21,7 +21,7 @@ let baseURL =  "data.fixer.io"
 let apiAccessKey =  "f3bc4b269910a2292a6d67a46d5a476b"
 
 enum FixerAPI {
-    case latest
+    case latest(base: String)
    
     func factoryRequest() -> URLRequest {
         var request = URLRequest(url: self.url)
@@ -52,8 +52,9 @@ extension FixerAPI: Url, APIprotocol {
     
     var getParametrs: [String: String] {
         switch self {
-        case .latest:
-            return ["access_key": apiAccessKey]
+        case .latest(let baseTxt):
+            return ["access_key": apiAccessKey,
+                    "base": baseTxt]
         //default: return [:]
         }
     }
@@ -113,7 +114,7 @@ extension FixerAPI: Url, APIprotocol {
                                                 parameters: [String: String],
                                                 postParametersNotUnique: [(String, String)] = []) -> URLComponents {
         var urlComponents = URLComponents()
-        urlComponents.scheme = "http    "
+        urlComponents.scheme = "http"
         urlComponents.host = baseURL
         urlComponents.path = "\(action)"
         urlComponents.queryItems = []

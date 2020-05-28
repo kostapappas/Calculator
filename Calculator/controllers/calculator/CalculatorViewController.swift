@@ -17,8 +17,10 @@ final class CalculatorViewController: UIViewController {
     @IBOutlet weak var exchangeContainer: UIView!
     @IBOutlet weak var exchAmountLabel: UILabel!
     
+    fileprivate var isLoading = false
     fileprivate let backendAPI = FixedProxyAPI()
     fileprivate var calculatorBrain: Calculator =  SimpleCalculator()
+    fileprivate var exchangeRates: [String: Double]?
     fileprivate var activeRate: Double = 1.0
     fileprivate var fromExchValue: Double = 0.0 {
         didSet {
@@ -45,18 +47,20 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction func toExtRateBtnPressed(_ sender: Any) {
-        backendAPI.getLatest { (netAnswer, error, _) in
+        guard let fromTxt = fromExchRateBtn.titleLabel?.text else { return }
+        guard !isLoading else { return }
+        isLoading = true
+        backendAPI.getLatest(baseTxt: fromTxt) { [weak self] (netAnswer, error, _) in
+            self?.isLoading = false
             if !error.isEmpty {
                print("***API Error -> \(error)")
             } else {
                 if let results = netAnswer?.data {
-                    print("***Got results \n\(results)")
+                    self?.exchangeRates = results
                 }
             }
-            
         }
     }
-    
 }
 
 extension CalculatorViewController: CalculatorActionDelegate {
