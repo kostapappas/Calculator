@@ -23,4 +23,5 @@ extension String {
         //todo improve localization
         return self.contains(",")
     }
+    
 }

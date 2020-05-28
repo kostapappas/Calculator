@@ -14,14 +14,14 @@ enum CalculatorType {
     case scientific
 }
 
-protocol CalculatorActionsDelegate: class {
+protocol CalculatorViewActionsDelegate: class {
     func buttonPressed(text: String)
 }
 
 @IBDesignable
 class CalculatorView: UIView {
     
-    weak var actionDelegate: CalculatorActionsDelegate?
+    weak var actionDelegate: CalculatorViewActionsDelegate?
     
     private var type = CalculatorType.simple
     
@@ -43,7 +43,7 @@ class CalculatorView: UIView {
     private let buttonCalculate = CalculatorActionButton(text: "=")
     
     required init (type: CalculatorType = .simple,
-                   actionDelegate: CalculatorActionsDelegate? = nil) {
+                   actionDelegate: CalculatorViewActionsDelegate? = nil) {
         self.type = type
         self.actionDelegate = actionDelegate
         super.init(frame: CGRect.zero)

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,18 +12,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CalculatorViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BUe-aa-A9l" customClass="CalculatorView" customModule="Calculator" customModuleProvider="target">
-                                <rect key="frame" x="23" y="393" width="368" height="449"/>
+                                <rect key="frame" x="20.5" y="240" width="334" height="407"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BUe-aa-A9l" secondAttribute="height" multiplier="333:406" id="hyG-wP-Trz"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-wb-dkC">
-                                <rect key="frame" x="23" y="291.5" width="368" height="93.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wF3-wb-dkC">
+                                <rect key="frame" x="20.5" y="88.5" width="334" height="84.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="wF3-wb-dkC" secondAttribute="height" multiplier="368:93" id="25e-6Y-8Ny"/>
                                 </constraints>
@@ -31,26 +31,90 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gcb-Kg-cbP">
+                                <rect key="frame" x="18.5" y="173" width="338" height="67"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23.234" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="O7r-r9-gb5">
+                                        <rect key="frame" x="219.5" y="7" width="118.5" height="53.5"/>
+                                        <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="16"/>
+                                        <color key="textColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="aje-2b-PxN">
+                                        <rect key="frame" x="15" y="18.5" width="189.5" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnU-4U-Bpp" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="66.5" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="EUR">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="fromExtRateBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uct-x4-L35"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJr-XS-85X">
+                                                <rect key="frame" x="85.5" y="0.0" width="16" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFk-f2-gv8" customClass="RoundButton" customModule="Calculator" customModuleProvider="target">
+                                                <rect key="frame" x="120.5" y="0.0" width="69" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="EUR">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="toExtRateBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fy8-V8-9zT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="dnU-4U-Bpp" firstAttribute="width" secondItem="aje-2b-PxN" secondAttribute="width" multiplier="0.35" id="Dwi-H4-5wH"/>
+                                            <constraint firstItem="kFk-f2-gv8" firstAttribute="width" secondItem="dnU-4U-Bpp" secondAttribute="width" multiplier="1.04511" id="RW4-KP-RJS"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="6BL-a5-ape"/>
+                                    <constraint firstItem="O7r-r9-gb5" firstAttribute="height" secondItem="gcb-Kg-cbP" secondAttribute="height" multiplier="0.8" id="8Kf-Hm-XpW"/>
+                                    <constraint firstItem="aje-2b-PxN" firstAttribute="centerY" secondItem="O7r-r9-gb5" secondAttribute="centerY" id="8hC-8p-i8l"/>
+                                    <constraint firstItem="O7r-r9-gb5" firstAttribute="width" secondItem="gcb-Kg-cbP" secondAttribute="width" multiplier="0.35" id="FF6-cE-cgs"/>
+                                    <constraint firstItem="O7r-r9-gb5" firstAttribute="centerY" secondItem="gcb-Kg-cbP" secondAttribute="centerY" id="JGt-KL-TkM"/>
+                                    <constraint firstItem="aje-2b-PxN" firstAttribute="leading" secondItem="gcb-Kg-cbP" secondAttribute="leading" constant="15" id="abs-5p-iuT"/>
+                                    <constraint firstItem="O7r-r9-gb5" firstAttribute="leading" secondItem="aje-2b-PxN" secondAttribute="trailing" constant="15" id="jgw-3q-oTD"/>
+                                    <constraint firstAttribute="trailing" secondItem="O7r-r9-gb5" secondAttribute="trailing" id="oNa-EE-KHT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BUe-aa-A9l" secondAttribute="bottom" constant="20" id="DNz-fP-TdF"/>
-                            <constraint firstItem="BUe-aa-A9l" firstAttribute="top" secondItem="wF3-wb-dkC" secondAttribute="bottom" constant="8" id="Mb5-IY-w6k"/>
+                            <constraint firstItem="gcb-Kg-cbP" firstAttribute="centerX" secondItem="wF3-wb-dkC" secondAttribute="centerX" id="Hrq-py-t59"/>
                             <constraint firstItem="wF3-wb-dkC" firstAttribute="width" secondItem="BUe-aa-A9l" secondAttribute="width" id="VLs-1H-k92"/>
+                            <constraint firstItem="gcb-Kg-cbP" firstAttribute="width" secondItem="wF3-wb-dkC" secondAttribute="width" multiplier="1.01198" id="bf0-Ba-kJr"/>
                             <constraint firstItem="BUe-aa-A9l" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="lsW-1l-U2a"/>
+                            <constraint firstItem="BUe-aa-A9l" firstAttribute="top" secondItem="gcb-Kg-cbP" secondAttribute="bottom" id="pRO-iv-O0F"/>
                             <constraint firstItem="wF3-wb-dkC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="qRU-F8-tbJ"/>
                             <constraint firstItem="BUe-aa-A9l" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.89" id="wNb-w9-eOJ"/>
+                            <constraint firstItem="gcb-Kg-cbP" firstAttribute="top" secondItem="wF3-wb-dkC" secondAttribute="bottom" id="ybI-Oy-cut"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="calculatorScreen" destination="wF3-wb-dkC" id="7MZ-zC-Ym1"/>
                         <outlet property="calculatorView" destination="BUe-aa-A9l" id="UYQ-5j-lAy"/>
+                        <outlet property="exchAmountLabel" destination="O7r-r9-gb5" id="CF2-Kc-hxI"/>
+                        <outlet property="exchangeContainer" destination="gcb-Kg-cbP" id="n6M-AI-d3C"/>
+                        <outlet property="fromExchRateBtn" destination="dnU-4U-Bpp" id="TGP-TB-SJR"/>
+                        <outlet property="toExchRateBtn" destination="kFk-f2-gv8" id="554-84-aDI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="109.82142857142857"/>
+            <point key="canvasLocation" x="136.80000000000001" y="109.29535232383809"/>
         </scene>
     </scenes>
 </document>
