@@ -18,7 +18,7 @@
 		6B452BCF247C4E81006C3688 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BCE247C4E81006C3688 /* CalculatorButton.swift */; };
 		6B452BD2247C58BD006C3688 /* CalculatorNumberButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BD1247C58BD006C3688 /* CalculatorNumberButton.swift */; };
 		6B452BD4247C58D9006C3688 /* CalculatorActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BD3247C58D9006C3688 /* CalculatorActionButton.swift */; };
-		6B452BD7247C5C23006C3688 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 6B452BD6247C5C23006C3688 /* SwiftPackageProductDependency */; };
+		6B452BD7247C5C23006C3688 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 6B452BD6247C5C23006C3688 /* Stevia */; };
 		6B452BD9247C5D04006C3688 /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B452BD8247C5D04006C3688 /* CalculatorView.swift */; };
 		6BD70BF3247EDB380097B837 /* extensionUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD70BF2247EDB380097B837 /* extensionUIView.swift */; };
 		6BD70BF5247EE4A90097B837 /* extensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD70BF4247EE4A90097B837 /* extensionString.swift */; };
@@ -26,7 +26,7 @@
 		6BDAA89B247F955800FD31FC /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAA89A247F955800FD31FC /* RoundButton.swift */; };
 		6BDAA89E247F984800FD31FC /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAA89D247F984800FD31FC /* CalculatorBrain.swift */; };
 		6BDAA8A1247FA2E700FD31FC /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAA8A0247FA2E700FD31FC /* Network.swift */; };
-		6BDAA8A4247FA35D00FD31FC /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 6BDAA8A3247FA35D00FD31FC /* SwiftPackageProductDependency */; };
+		6BDAA8A4247FA35D00FD31FC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6BDAA8A3247FA35D00FD31FC /* Alamofire */; };
 		6BDAA8A7247FA48700FD31FC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAA8A6247FA48700FD31FC /* API.swift */; };
 		6BDAA8A9247FA5B900FD31FC /* extensionUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAA8A8247FA5B900FD31FC /* extensionUIApplication.swift */; };
 		6BDAA8AB247FA5FE00FD31FC /* extensionUIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDAA8AA247FA5FE00FD31FC /* extensionUIDevice.swift */; };
@@ -74,8 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B452BD7247C5C23006C3688 /* BuildFile in Frameworks */,
-				6BDAA8A4247FA35D00FD31FC /* BuildFile in Frameworks */,
+				6B452BD7247C5C23006C3688 /* Stevia in Frameworks */,
+				6BDAA8A4247FA35D00FD31FC /* Alamofire in Frameworks */,
 				8A85F82213707C5E24E20EAD /* Pods_Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,7 +236,6 @@
 				C0CA567FA6C74308A2D4F870 /* Pods-Calculator.debug.xcconfig */,
 				69282FE7F6EACB33B333598A /* Pods-Calculator.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -260,8 +259,8 @@
 			);
 			name = Calculator;
 			packageProductDependencies = (
-				6B452BD6247C5C23006C3688 /* SwiftPackageProductDependency */,
-				6BDAA8A3247FA35D00FD31FC /* SwiftPackageProductDependency */,
+				6B452BD6247C5C23006C3688 /* Stevia */,
+				6BDAA8A3247FA35D00FD31FC /* Alamofire */,
 			);
 			productName = Calculator;
 			productReference = 6B0D9D5A247C354300ACE335 /* Calculator.app */;
@@ -293,8 +292,8 @@
 			);
 			mainGroup = 6B0D9D51247C354300ACE335;
 			packageReferences = (
-				6B452BD5247C5C23006C3688 /* RemoteSwiftPackageReference */,
-				6BDAA8A2247FA35D00FD31FC /* RemoteSwiftPackageReference */,
+				6B452BD5247C5C23006C3688 /* XCRemoteSwiftPackageReference "Stevia" */,
+				6BDAA8A2247FA35D00FD31FC /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 6B0D9D5B247C354300ACE335 /* Products */;
 			projectDirPath = "";
@@ -432,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -492,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -610,7 +611,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6B452BD5247C5C23006C3688 /* RemoteSwiftPackageReference */ = {
+		6B452BD5247C5C23006C3688 /* XCRemoteSwiftPackageReference "Stevia" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/Stevia";
 			requirement = {
@@ -618,7 +619,7 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		6BDAA8A2247FA35D00FD31FC /* RemoteSwiftPackageReference */ = {
+		6BDAA8A2247FA35D00FD31FC /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
@@ -629,14 +630,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6B452BD6247C5C23006C3688 /* SwiftPackageProductDependency */ = {
+		6B452BD6247C5C23006C3688 /* Stevia */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6B452BD5247C5C23006C3688 /* RemoteSwiftPackageReference */;
+			package = 6B452BD5247C5C23006C3688 /* XCRemoteSwiftPackageReference "Stevia" */;
 			productName = Stevia;
 		};
-		6BDAA8A3247FA35D00FD31FC /* SwiftPackageProductDependency */ = {
+		6BDAA8A3247FA35D00FD31FC /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6BDAA8A2247FA35D00FD31FC /* RemoteSwiftPackageReference */;
+			package = 6BDAA8A2247FA35D00FD31FC /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

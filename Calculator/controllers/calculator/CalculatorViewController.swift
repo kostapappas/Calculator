@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyPickerPopover
 
 final class CalculatorViewController: UIViewController {
 
@@ -21,7 +22,29 @@ final class CalculatorViewController: UIViewController {
     fileprivate let backendAPI = FixedProxyAPI()
     fileprivate var calculatorBrain: Calculator =  SimpleCalculator()
     fileprivate var exchangeRates: [String: Double]?
-    fileprivate var activeRate: Double = 1.0
+    fileprivate var selectedToBase = "EUR" {
+        didSet {
+            toExchRateBtn.setTitle(selectedToBase, for: .normal)
+        }
+    }
+    
+    fileprivate var selectedFromBase = "EUR" {
+        didSet {
+            fromExchRateBtn.setTitle(selectedFromBase, for: .normal)
+        }
+    }
+    
+    fileprivate var exchangeRatesArray: [String] {
+        return Array(exchangeRates?.keys.map({ (key) -> String in
+            return key
+            }) ?? []).sorted()
+    }
+    fileprivate var activeRate: Double = 1.0 {
+        didSet {
+            self.fromExchValue = (Double(calculatorScreen.text ?? "0.0") ?? 0.0) * activeRate
+        }
+    }
+    
     fileprivate var fromExchValue: Double = 0.0 {
         didSet {
             self.updateExchangeUI()
@@ -34,6 +57,7 @@ final class CalculatorViewController: UIViewController {
         calculatorView.actionDelegate = self
         calculatorBrain.actionDelegate = self
         exchAmountLabel.text = "0.00"
+        
     }
     
     func updateExchangeUI() {
@@ -43,22 +67,96 @@ final class CalculatorViewController: UIViewController {
     }
     
     @IBAction func fromExtRateBtnPressed(_ sender: Any) {
-        
+//        if (exchangeRates ?? [:]).isEmpty {
+//            self.getLatestFromBackend { [weak self](results) in
+//                if let hasRates = results, !hasRates.isEmpty {
+//                    self?.showFromButtonPopUp()
+//                }
+//            }
+//        } else {
+//            self.showFromButtonPopUp()
+//        }
     }
     
+    
     @IBAction func toExtRateBtnPressed(_ sender: Any) {
-        guard let fromTxt = fromExchRateBtn.titleLabel?.text else { return }
+        if (exchangeRates ?? [:]).isEmpty {
+            self.getLatestFromBackend { [weak self](results) in
+                if let hasRates = results, !hasRates.isEmpty {
+                    self?.showToButtonPopUp()
+                }
+            }
+        } else {
+            self.showToButtonPopUp()
+        }
+    }
+    
+    fileprivate func showFromButtonPopUp() {
+        StringPickerPopover(title: "StringPicker", choices: exchangeRatesArray)
+        .setSelectedRow(0)
+            .setValueChange(action: { (_, _, _) in
+                //print("current  \(itemType)")
+            })
+        .setDoneButton(action: { (_, _, selectedString) in
+            //print("done row \(selectedRow) \(selectedString)")
+            self.selectedFromBase = selectedString
+            self.recalculateRatio()
+        })
+        .setCancelButton(action: { (_, _, _) in print("cancel")}
+        )
+        .appear(originView: fromExchRateBtn, baseViewController: self)
+    }
+    
+    fileprivate func showToButtonPopUp() {
+        StringPickerPopover(title: "StringPicker", choices: exchangeRatesArray)
+        .setSelectedRow(0)
+            .setValueChange(action: { (_, _, _) in
+                //print("current  \(itemType)")
+            })
+        .setDoneButton(action: { (_, _, selectedString) in
+            //print("done row \(selectedRow) \(selectedString)")
+            if let exchangeRatio = self.exchangeRates?[selectedString] {
+                self.selectedToBase = selectedString
+                self.activeRate = exchangeRatio
+            }
+        })
+        .setCancelButton(action: { (_, _, _) in print("cancel")}
+        )
+        .appear(originView: toExchRateBtn, baseViewController: self)
+    }
+    
+    fileprivate func recalculateRatio() {
+        //we have new base
+        self.getLatestFromBackend { [weak self](results) in
+            if let hasRates = results, !hasRates.isEmpty {
+                guard let toTxt = self?.toExchRateBtn.titleLabel?.text,
+                    let newRatio =  (self?.exchangeRates ?? [:])[toTxt] else {
+                    return
+                }
+                self?.activeRate = newRatio
+            }
+        }
+    }
+    
+    fileprivate func getLatestFromBackend(completion: @escaping ([String: Double]?) -> Void) {
+        guard let baseTxt = fromExchRateBtn.titleLabel?.text else {
+            completion(nil)
+            return
+        }
         guard !isLoading else { return }
         isLoading = true
-        backendAPI.getLatest(baseTxt: fromTxt) { [weak self] (netAnswer, error, _) in
+        backendAPI.getLatest(baseTxt: baseTxt) { [weak self] (netAnswer, error, _) in
             self?.isLoading = false
             if !error.isEmpty {
                print("***API Error -> \(error)")
             } else {
-                if let results = netAnswer?.data {
+                if let results = netAnswer?.rates {
                     self?.exchangeRates = results
+                    completion(results)
+                    return
                 }
             }
+            completion(nil)
         }
     }
 }
@@ -66,7 +164,7 @@ final class CalculatorViewController: UIViewController {
 extension CalculatorViewController: CalculatorActionDelegate {
     func screenUpdated(with text: String) {
         guard let newValue = Double(text) else { return }
-        fromExchValue = newValue
+        fromExchValue = newValue * activeRate
         
     }
 }

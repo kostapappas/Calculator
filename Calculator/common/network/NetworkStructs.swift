@@ -10,8 +10,11 @@ import Foundation
 
 //Network
 public struct ΝetworkAnswer<Τ: Codable>: Codable, BacisNetAnswer {
-    let data: Τ?
+    let rates: Τ?
     public var success: Bool?
+    public var timestamp: Double?
+    public var base: String?
+    public var date: String?
     public var error: NetError?
     
     func isSuccessfull() -> Bool {
