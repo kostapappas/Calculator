@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CalculatorActionButton: CalculatorButton {
+final class CalculatorActionButton: CalculatorButton {
     private var doItOnce = false
 
     @IBInspectable var numberText: String? {

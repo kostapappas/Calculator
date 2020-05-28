@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-public class Backend {
+public class FixedProxyAPI {
     
     private var networkManager: NetworkManager {
         let netManag = NetworkManager.shared
@@ -17,7 +17,7 @@ public class Backend {
         return netManag
     }
     
-    func getSettings(completion: @escaping (ΝetworkAnswer<[String: Double]>?, String, Int?) -> Void) {
+    func getLatest(completion: @escaping (ΝetworkAnswer<[String: Double]>?, String, Int?) -> Void) {
         let api = FixerAPI.latest
         let handleNetworkCompletion = self.factoryTheHandleCompletion(completion: completion)
         networkManager.getJson(from: api,
@@ -26,13 +26,13 @@ public class Backend {
     
 }
 
-extension Backend {
+extension FixedProxyAPI {
     fileprivate func factoryTheHandleCompletion <T: Codable> (
         completion: @escaping (T?, String, Int?) -> Void) -> (Result<T>) -> Void {
         let handleCompletion: (Result<T>) -> Void = { (netResponse) in
             switch netResponse {
             case .failure(let error, let errorCode):
-                self.log("------------ KRSAPI Log ERROR (code:\(errorCode) ------------\n\(error)\n---------------------------------------")
+                self.log("------------ Calculator Log ERROR (code:\(errorCode) ------------\n\(error)\n---------------------------------------")
                 completion(nil, error.localizedDescription, errorCode)
             case .success(let decodedAnswer):
                 completion(decodedAnswer, "", nil)
@@ -42,6 +42,6 @@ extension Backend {
     }
     
     func log(_ str: String) {
-        print("------------ KRSAPI Log ------------\n\(str)\n---------------------------------------")
+        print("------------ Calculator Log ------------\n\(str)\n---------------------------------------")
     }
 }

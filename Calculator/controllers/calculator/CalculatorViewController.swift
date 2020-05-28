@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalculatorViewController: UIViewController {
+final class CalculatorViewController: UIViewController {
 
     @IBOutlet weak var calculatorScreen: UILabel!
     @IBOutlet weak var calculatorView: CalculatorView!
@@ -17,6 +17,7 @@ class CalculatorViewController: UIViewController {
     @IBOutlet weak var exchangeContainer: UIView!
     @IBOutlet weak var exchAmountLabel: UILabel!
     
+    fileprivate let backendAPI = FixedProxyAPI()
     fileprivate var calculatorBrain: Calculator =  SimpleCalculator()
     fileprivate var activeRate: Double = 1.0
     fileprivate var fromExchValue: Double = 0.0 {
@@ -44,7 +45,16 @@ class CalculatorViewController: UIViewController {
     }
     
     @IBAction func toExtRateBtnPressed(_ sender: Any) {
-        
+        backendAPI.getLatest { (netAnswer, error, _) in
+            if !error.isEmpty {
+               print("***API Error -> \(error)")
+            } else {
+                if let results = netAnswer?.data {
+                    print("***Got results \n\(results)")
+                }
+            }
+            
+        }
     }
     
 }

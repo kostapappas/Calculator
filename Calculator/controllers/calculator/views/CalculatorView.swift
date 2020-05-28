@@ -19,7 +19,7 @@ protocol CalculatorViewActionsDelegate: class {
 }
 
 @IBDesignable
-class CalculatorView: UIView {
+final class CalculatorView: UIView {
     
     weak var actionDelegate: CalculatorViewActionsDelegate?
     

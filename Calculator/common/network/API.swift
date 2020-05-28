@@ -17,7 +17,7 @@ private protocol Method {
     var method: String { get }
 }
 
-let baseURL =  "http://data.fixer.io/api/" 
+let baseURL =  "data.fixer.io"
 let apiAccessKey =  "f3bc4b269910a2292a6d67a46d5a476b"
 
 enum FixerAPI {
@@ -46,7 +46,7 @@ extension FixerAPI: Url, APIprotocol {
     var url: URL {
         switch self {
         case .latest:
-            return createUrl(for: "latest")
+            return createUrl(for: "/api/latest")
         }
     }
     
@@ -113,7 +113,7 @@ extension FixerAPI: Url, APIprotocol {
                                                 parameters: [String: String],
                                                 postParametersNotUnique: [(String, String)] = []) -> URLComponents {
         var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
+        urlComponents.scheme = "http    "
         urlComponents.host = baseURL
         urlComponents.path = "\(action)"
         urlComponents.queryItems = []
